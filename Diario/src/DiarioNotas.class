@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+
+public class DiarioNotas {
+
+    private String nomeCurso;
+    private ArrayList<Double> notas;
+
+    // Construtor para inicializar o nome do curso e a lista de notas
+    public DiarioNotas(String nomeCurso) {
+        this.nomeCurso = nomeCurso;
+        this.notas = new ArrayList<>();
+    }
+
+    // Método para adicionar uma nota
+    public void adicionarNota(double nota) {
+        notas.add(nota);
+    }
+
+    // Método para obter a maior nota
+    public double obterMaiorNota() {
+        double maiorNota = Double.MIN_VALUE;
+        for (double nota : notas) {
+            if (nota > maiorNota) {
+                maiorNota = nota;
+            }
+        }
+        return maiorNota;
+    }
+
+    // Método para obter a menor nota
+    public double obterMenorNota() {
+        double menorNota = Double.MAX_VALUE;
+        for (double nota : notas) {
+            if (nota < menorNota) {
+                menorNota = nota;
+            }
+        }
+        return menorNota;
+    }
+
+    // Método para calcular a média das notas
+    public double calcularMedia() {
+        double soma = 0.0;
+        for (double nota : notas) {
+            soma += nota;
+        }
+        return (soma / notas.size());
+    }
+
+    // Método para exibir um gráfico de barras com as notas
+    public void exibirGraficoDeBarras() {
+        System.out.println("\nGráfico de Barras das Notas:");
+        for (double nota : notas) {
+            System.out.printf("%.2f: ", nota);
+            for (int i = 0; i < nota; i++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    // Método para gerar o relatório de notas
+    public void gerarRelatorio() {
+        System.out.println("Nome do curso: " + nomeCurso);
+        System.out.println("Maior nota: " + obterMaiorNota());
+        System.out.println("Menor nota: " + obterMenorNota());
+        System.out.printf("Média das notas: %.2f\n", calcularMedia());
+        exibirGraficoDeBarras();
+    }
+}

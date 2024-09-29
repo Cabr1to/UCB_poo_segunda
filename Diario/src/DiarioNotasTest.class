@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class DiarioNotasTest {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        // Solicita o nome do curso
+        System.out.println("Digite o nome do curso:");
+        String nomeCurso = entrada.nextLine();
+
+        // Cria um objeto da classe DiarioNotas
+        DiarioNotas diarioNotas = new DiarioNotas(nomeCurso);
+
+        // Solicita o número de notas
+        System.out.println("Quantas notas deseja inserir?");
+        int quantidadeNotas = entrada.nextInt();
+
+        // Adiciona as notas ao diário
+        for (int i = 1; i <= quantidadeNotas; i++) {
+            System.out.println("Digite a nota " + i + ":");
+            double nota = entrada.nextDouble();
+            diarioNotas.adicionarNota(nota);
+        }
+
+        // Gera e exibe o relatório com as notas, maior, menor e gráfico de barras
+        diarioNotas.gerarRelatorio();
+    }
+}
